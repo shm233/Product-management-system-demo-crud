@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #0f172a;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      
+      .chat-container {
+        width: 100%;
+        max-width: 420px;
+        height: 600px;
+        background: #fff;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      }
+      
+      .chat-header {
+        background: #4f46e5;
+        color: white;
+        padding: 15px;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+      }
+      
+      .chat-box {
+        flex: 1;
+        padding: 15px;
+        overflow-y: auto;
+        background: #f1f5f9;
+      }
+      
+      .message {
+        margin-bottom: 12px;
+        max-width: 70%;
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 14px;
+        line-height: 1.4;
+      }
+      
+      .sent {
+        background: #4f46e5;
+        color: white;
+        margin-left: auto;
+        border-bottom-right-radius: 0;
+      }
+      
+      .received {
+        background: #e2e8f0;
+        color: #111;
+        margin-right: auto;
+        border-bottom-left-radius: 0;
+      }
+      
+      .chat-input {
+        display: flex;
+        padding: 10px;
+        border-top: 1px solid #ddd;
+        background: #fff;
+      }
+      
+      .chat-input input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        outline: none;
+      }
+      
+      .chat-input button {
+        margin-left: 8px;
+        padding: 10px 14px;
+        border: none;
+        background: #4f46e5;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      
+      .chat-input button:hover {
+        background: #3730a3;
+      }
+    </style>
+  </head>
+
+  <body>
+    {% if messages %}
+      {% for m in messages %}
+        {{ m }}
+      {% endfor %}
+    {% endif %}
+  </body>
+</html>

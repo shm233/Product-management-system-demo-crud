@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Product</title>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #4f46e5, #06b6d4);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .container {
+        background: #fff;
+        padding: 25px;
+        width: 100%;
+        max-width: 450px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+      
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
+      
+      .form-group {
+        margin-bottom: 15px;
+      }
+      
+      label {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 14px;
+        color: #444;
+      }
+      
+      input,
+      textarea,
+      select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        outline: none;
+        transition: 0.2s;
+        font-size: 14px;
+      }
+      
+      input:focus,
+      textarea:focus,
+      select:focus {
+        border-color: #4f46e5;
+        box-shadow: 0 0 5px rgba(79, 70, 229, 0.4);
+      }
+      
+      textarea {
+        resize: none;
+        height: 80px;
+      }
+      
+      button {
+        width: 100%;
+        padding: 12px;
+        background: #4f46e5;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      
+      button:hover {
+        background: #3730a3;
+      }
+      
+      .back {
+        text-align: center;
+        margin-top: 12px;
+        font-size: 14px;
+      }
+      
+      .back a {
+        color: #4f46e5;
+        text-decoration: none;
+      }
+      
+      .back a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      {% include 'master/message.html' %}
+      {% include 'master/nav.html' %}
+      <h2>Update Product</h2>
+
+      <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+          <label>Product Name</label>
+          <input name="name" value="{{ pro.name }}" type="text" placeholder="Enter product name" required />
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea name="description" id="">{{ pro.description }}</textarea>
+        </div>
+        <div class="form-group">
+          <label>Price ($)</label>
+          <input name="price" value="{{ pro.price }}" type="number" placeholder="Enter price" required />
+        </div>
+        <div class="form-group">
+          <label>Product Image</label>
+          <input name="product_image" type="file" placeholder="Enter stock quantity" />
+          <img src="/{{ pro.product_image }}" alt="{{ pro.product_image }}" height="50px" width="50px" />
+        </div>
+        <div class="form-group">
+          <label>Production Date</label>
+          <input name="production_date" value="{{ pro.production_date|date:'Y-m-d' }}" type="date" placeholder="Enter stock quantity" required />
+        </div>
+        <button type="submit">Update Product</button>
+      </form>
+    </div>
+  </body>
+</html>

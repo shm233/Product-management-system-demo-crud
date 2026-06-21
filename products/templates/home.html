@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Management System - Home</title>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f4f6f9;
+      }
+      
+      /* NAVBAR */
+      .navbar {
+        background: #1f2937;
+        color: white;
+        padding: 14px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .logo {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        margin-left: 15px;
+        padding: 6px 10px;
+        border-radius: 6px;
+      }
+      
+      .nav-links a:hover {
+        background: #374151;
+      }
+      
+      /* CONTAINER */
+      .container {
+        padding: 20px;
+      }
+      
+      /* DASHBOARD CARDS */
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+      
+      .card {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        text-align: center;
+      }
+      
+      .card h3 {
+        margin: 0;
+        font-size: 18px;
+        color: #333;
+      }
+      
+      .card p {
+        font-size: 22px;
+        font-weight: bold;
+        color: #4f46e5;
+        margin-top: 10px;
+      }
+      
+      .edit {
+        background: #10b981;
+        color: white;
+      }
+      
+      .delete {
+        background: #ef4444;
+        color: white;
+      }
+      
+      .add-btn {
+        background: #4f46e5;
+        color: white;
+        padding: 10px 14px;
+        border-radius: 8px;
+        text-decoration: none;
+        display: inline-block;
+        margin-bottom: 10px;
+      }
+      
+      .add-btn:hover {
+        background: #3730a3;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      {% include 'master/nav.html' %}
+      {% include 'master/message.html' %}
+      <!-- DASHBOARD CARDS -->
+      <div class="cards">
+        <div class="card">
+          <h3>{{ hello }}</h3>
+          <p>{{ request.user.username }}</p>
+          <p>Go to Product list to see products</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

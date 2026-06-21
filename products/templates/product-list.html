@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product List</title>
+    <style>
+      /* PRODUCT TABLE */
+      .table-container {
+        background: white;
+        padding: 15px;
+        border-radius: 10px;
+        margin: auto;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      }
+      
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      
+      th {
+        background: #4f46e5;
+        color: white;
+      }
+      
+      tr:hover {
+        background: #f1f5f9;
+      }
+      
+      .btn {
+        padding: 6px 10px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 13px;
+      }
+      /* CONTAINER */
+      .container {
+        padding: 20px;
+      }
+      
+      a:hover {
+        font-size: 50px;
+        font-style: oblique;
+        color: #03b8f0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="table-container">
+      {% include 'master/nav.html' %}
+      {% include 'master/message.html' %}
+      <a href="{% url 'add_product' %}" class="add-btn">Add Product</a>
+      <table>
+        <thead>
+          <tr>
+            <th>Sl No.</th>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Product Image</th>
+            <th>Production Date</th>
+            <th>Created By</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for p in pro %}
+            <tr>
+              <td>{{ forloop.counter }}</td>
+              <td>{{ p.name }}</td>
+              <td>{{ p.description }}</td>
+              <td>{{ p.price }}</td>
+              <td>
+                {% if p.product_image %}
+                  <img src="/{{ p.product_image }}" alt="{{ p.product_image }}" width="150px" height="150px" />
+                {% else %}
+                  <p>Image Loading</p>
+                {% endif %}
+              </td>
+              <td>{{ p.production_date }}</td>
+              <td>{{ p.created_by }}</td>
+              <td>
+                <a href="{% url 'update_product' p.id %}">Update</a>
+                <a href="{% url 'delete_product' p.id %}">Delete</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

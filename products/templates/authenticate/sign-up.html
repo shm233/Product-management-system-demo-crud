@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #4f46e5, #06b6d4);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .container {
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        width: 100%;
+        max-width: 400px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+      
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
+      
+      .form-group {
+        margin-bottom: 15px;
+      }
+      
+      label {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 14px;
+        color: #444;
+      }
+      
+      input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        outline: none;
+        transition: 0.2s;
+      }
+      
+      input:focus {
+        border-color: #4f46e5;
+        box-shadow: 0 0 5px rgba(79, 70, 229, 0.4);
+      }
+      
+      button {
+        width: 100%;
+        padding: 12px;
+        background: #4f46e5;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      
+      button:hover {
+        background: #3730a3;
+      }
+      
+      .footer {
+        text-align: center;
+        margin-top: 15px;
+        font-size: 14px;
+      }
+      
+      .footer a {
+        color: #4f46e5;
+        text-decoration: none;
+      }
+      
+      .footer a:hover {
+        text-decoration: underline;
+      }
+
+      a:hover{
+        font-size: 30px;
+        color: #06b6d4;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      {% include 'master/nav.html' %}
+      {% include 'master/message.html' %}
+      <h2>Create Your Account</h2>
+
+      <form action="" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+          <label>Username</label>
+          <input name="username" type="text" placeholder="Enter your username" required />
+        </div>
+
+        <div class="form-group">
+          <label>Full Name</label>
+          <input name="full_name" type="text" placeholder="Enter your Full Name" required />
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input name="email" type="email" placeholder="Enter your email" required />
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <input name="password" type="password" placeholder="Enter password" required />
+        </div>
+
+        <div class="form-group">
+          <label>Confirm Password</label>
+          <input name="password2" type="password" placeholder="Confirm password" required />
+        </div>
+
+        <button type="submit">Sign Up</button>
+      </form>
+
+      <div class="footer">
+        Already have an account? <a href="{% url 'sign_in' %}">Login</a>
+      </div>
+    </div>
+  </body>
+</html>
